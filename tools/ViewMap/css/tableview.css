@@ -1,0 +1,181 @@
+@charset "utf-8";
+
+/*数据控件*/
+
+/*
+.main_content_block {
+    margin: 80px 0 0 150px;
+}
+*/
+
+.block_title {
+    color: #747474;
+}
+.info_table {
+    /*    width: 800px;*/
+}
+.table_header {
+    height: 40px;
+    border-bottom: #a7a596 solid 1px;
+    line-height: 40px;
+}
+.table_point {
+    position: relative;
+    float: left;
+}
+.point_title {
+    width: 80px;
+    display: inline-block;
+    color: #aeac97;
+    margin-left: -40px;
+    text-align: center;
+    font-size: 12px;
+}
+.table_point .point_graduation {
+    position: absolute;
+    top: 40px;
+    margin: -10px 0 0;
+    width: 99%;
+    height: 10px;
+    border-left: #dadbd3 solid 1px;
+}
+.info_table.sixtab .table_point:last-child,
+.table_point:last-child {
+    width: 1px;
+    margin-left: -1px;
+}
+.point_title_end {
+    width: 80px;
+    display: inline-block;
+    float: right;
+    margin-right: -40px;
+    color: #aeac97;
+    text-align: center;
+    font-size: 12px;
+}
+.table_body .table_point,
+.table_bg,
+.time_line {
+    height: 100%;
+}
+.time_line {
+    width: 99%;
+    border-left: #d9d9d7 dashed 1px;
+}
+.table_body {
+    position: relative;
+}
+.table_bg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+.module_block {
+    position: relative;
+    min-width: 1px;
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+}
+.load_block {
+    min-width: 2px;
+    float: left;
+    margin-top: 7px;
+    height: 20px;
+    background: #ddd;
+    color: #FFF;
+    text-indent: 14px;
+    font-size: 12px;
+    line-height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.load_block.fir {
+    background: #77b3de;
+}
+.load_block.par {
+    background: #eba446;
+}
+.load_block.cah {
+    background: #72c380;
+}
+.load_block.err {
+    background: #df6164;
+}
+/*load_block动画补偿边框样式*/
+
+.load_block {
+    border-top: #f2f2f0 solid 1px;
+    border-left: #f2f2f0 solid 1px;
+    border-right: #f2f2f0 solid 0px;
+    border-bottom: #f2f2f0 solid 0px;
+    transition: border ease .4s;
+}
+/*选择中load_block的样式*/
+
+.module_block.select .load_block {
+    border: #fa682d solid 1px;
+}
+.module_block.select .module_name {
+    color: #fa682d;
+}
+/*
+.load_order {
+    padding: 0px 4px;
+    color: #FFF;
+    background: #dc6561;
+    font-size: 10px;
+    border-radius: 10px;
+    -webkit-transform: scale(0.75);
+    -o-transform: scale(1);
+    display: inline-block;
+}
+*/
+
+.module_name {
+    position: absolute;
+    left: -100px;
+    width: 80px;
+    color: #8b8b7a;
+    font-size: 12px;
+    text-align: right;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.tip_line {
+    opacity: 0;
+    height: 1px;
+    top: 50%;
+    margin-left: -1%;
+    background: #9c72cf;
+    position: absolute;
+}
+.tip_line:before {
+    position: absolute;
+    top: -7px;
+    content: " ";
+    height: 14px;
+    border-left: #9c72cf solid 2px;
+}
+.module_block:hover .tip_line {
+    opacity: 1;
+}
+/*宽度适应*/
+
+.table_point {
+    width: 19%;
+}
+.table_point:first-child {
+    margin-left: 2%;
+}
+.module_block {
+    margin-left: 2%;
+}
+/*六格表*/
+
+.info_table.sixtab .table_point {
+    width: 16%;
+}

@@ -1,0 +1,116 @@
+@charset 'utf-8';
+
+/*默认样式*/
+
+.total_process_container {
+    margin: 8px 0 0 10px;
+    position: relative;
+    transition: transform ease .3s;
+}
+.total_process {
+    position: relative;
+    white-space: nowrap;
+    /*overflow-x: auto;*/
+    height: 54px;
+}
+.total_process_point {
+    position: relative;
+    /*    float: left;*/
+    display: inline-block;
+    margin-left: 41px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #77b3de;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.total_process_point:before {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #FFF;
+    content: ' ';
+}
+.total_process_point:after {
+    position: absolute;
+    top: 6px;
+    left: 17px;
+    display: inline-block;
+    width: 37px;
+    height: 3px;
+    background: #77b3de;
+    content: ' ';
+    cursor: default;
+}
+.total_process_point:last-child:after {
+    display: none;
+}
+.total_process_point_name {
+    position: absolute;
+    top: 20px;
+    left: -17px;
+    overflow: hidden;
+    width: 50px;
+    color: #77b3de;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+}
+/*正方形替换样式*/
+
+.total_process_point.square,
+.total_process_point.square:before {
+    border-radius: 0;
+}
+/*颜色替换样式*/
+
+.total_process_point.yellow {
+    background: #eba446;
+}
+.total_process_point.yellow:after {
+    background: #eba446;
+}
+.total_process_point.green {
+    background: #72c380;
+}
+.total_process_point.green:after {
+    background: #72c380;
+}
+.total_process_point.red {
+    background: #df6164;
+}
+.total_process_point.red:after {
+    background: #df6164;
+}
+/*移动方块样式（默认向左-90像素）*/
+
+.total_process_mover {
+    position: absolute;
+    top: -11px;
+    left: -90px;
+    width: 32px;
+    height: 32px;
+    border: #a470e3 solid 1px;
+    transition: left ease .4s;
+}
+.total_process_mover_title {
+    position: absolute;
+    top: -15px;
+    left: -28px;
+    width: 90px;
+    height: 20px;
+    background: #a470e3;
+    color: #FFF;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px;
+}

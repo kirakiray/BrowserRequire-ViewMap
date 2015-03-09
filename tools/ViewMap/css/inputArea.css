@@ -1,0 +1,10 @@
+@charset "utf-8";
+ #data_input {
+    resize: none;
+    width: 50%;
+    height: 300px;
+    padding: 20px;
+    margin: 60px auto;
+    display: block;
+    font-family: 'Microsoft Yahei';
+}
