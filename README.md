@@ -40,6 +40,8 @@ viewData是json字符串，得到字符串后可以通过ajax返回给服务端�
 
 ###路径解释
 
+dist————viewMap数据获取插件压缩文件
+
 tools————放viewMap视图查看工具的主目录
 
 src————BrowserRequire源文件，viewMap数据获取插件
