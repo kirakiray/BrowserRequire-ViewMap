@@ -87,6 +87,16 @@
         */
         concatJS = function (value) {
             return value.concat('.js');
+        },
+        /*
+            判断对象是否是空对象
+            @param {object} obj 传入的对象
+        */
+        isEmpty = function (obj) {
+            for (var i in obj) {
+                return false;
+            }
+            return true;
         };
 
     //publicClass
@@ -434,8 +444,6 @@
             @param {string} uri 当前加载资源的真实uri地址
         */
         setModuleAgent: function (fileMapObj, loadModuleEvent, uri) {
-            //设置资源加载成功
-            fileMapObj.type = 2;
             //start--------以下是模块定义的逻辑----------
             //滞后对象，模块名
             var lagGather = null,
@@ -466,8 +474,10 @@
             //传入滞后函数
             if (lagGather) {
                 lagGather.action = function () {
+                    //设置资源加载成功
+                    fileMapObj.type = 2;
                     //延后的载入临时模块数据
-                    fileMapObj.module = tempM.main;
+                    fileMapObj.module = tempM.main.exports;
                     //设置模块
                     R.setModule(tempM.names, fileMapObj.module);
                     //执行ready事件
@@ -483,11 +493,13 @@
             } else if (tempM) {
                 //无延后的则直接设置模块
                 //载入临时模块数据
-                fileMapObj.module = tempM.main;
+                fileMapObj.module = tempM.main.exports;
                 //设置模块
                 R.setModule(tempM.names, fileMapObj.module);
             }
             //end--------以上是模块定义的逻辑----------
+            //设置资源加载成功
+            fileMapObj.type = 2;
             //执行ready事件
             loadModuleEvent.trigger(C_READY, {
                 //刚刚加载完成
@@ -517,10 +529,10 @@
                 loadEvent: loadModuleEvent,
                 //script节点对象
                 script: script
-                //模块
-                //module : undefined
-                //滞后汇总对象
-                //lagGather: new GatherFunction()
+                    //模块
+                    //module : undefined
+                    //滞后汇总对象
+                    //lagGather: new GatherFunction()
             };
             //记录到公用对象
             baseResource.map[uri] = fileMapObj;
@@ -851,7 +863,7 @@
             //写入临时模块
             baseResource.tempM = {
                 //模块的内容
-                main: ""
+                main: {}
                 //names: []
             };
             //运行define函数会放入临时模块中
@@ -859,12 +871,21 @@
             case "function":
                 //产生一个伪全局兼容对象（用于兼容使用window为全局的插件或组建）
                 var fakeWindow = create(window);
+                //添加exports和module参数
+                var moduleObj = {
+                    exports: {}
+                };
                 //若是函数则执行函数
-                baseResource.tempM.main = moduleContent.call(fakeWindow, R.defindedRequire);
+                var returnVal = moduleContent.call(fakeWindow, R.defindedRequire, moduleObj.exports, moduleObj);
+                if (returnVal) {
+                    baseResource.tempM.main.exports = returnVal;
+                } else {
+                    baseResource.tempM.main = moduleObj;
+                }
                 break;
             default:
                 //其他内容则填充为模块内容
-                baseResource.tempM.main = moduleContent;
+                baseResource.tempM.main.exports = moduleContent;
             };
             //判断是否有模块名，添加入模块
             baseResource.tempM.names = moduleName;
